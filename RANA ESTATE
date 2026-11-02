@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RANA ESTATE ADVISOR - Lahore</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f5f5f5}
+.header{background:#0B3D20;color:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.header a{color:white;text-decoration:none;margin:10px;font-weight:bold}
+.hero{background:white;text-align:center;padding:50px 20px}
+.properties{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:20px;max-width:1150px;margin:auto}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+.card img{width:100%;height:220px;object-fit:cover}
+.card-body{padding:15px}
+.btn{background:#0B3D20;color:white;padding:10px 18px;border-radius:6px;text-decoration:none;display:inline-block;font-weight:bold}
+.footer{background:#0B3D20;color:white;text-align:center;padding:35px;margin-top:30px}
+.float-wa{position:fixed;bottom:20px;right:20px;background:#25D366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:32px;text-decoration:none;z-index:999;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2 style="margin:0">RANA ESTATE ADVISOR</h2>
+  <div><a href="index.html">HOME</a><a href="sell.html">SELL</a><a href="buy.html">BUY</a></div>
+</div>
+<div class="hero">
+  <h1 style="margin:0;color:#0B3D20">Find Your Luxury Property in Lahore</h1>
+  <p>Trusted Advisors for Plots, Houses & Offices</p>
+  <a href="buy.html" class="btn">BUY PROPERTY</a>
+  <a href="sell.html" class="btn" style="background:#25D366;margin-left:10px">SELL PROPERTY</a>
+</div>
+
+<h2 style="text-align:center;color:#0B3D20">Available Properties (4 Pictures Section)</h2>
+<div class="properties">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800">
+    <div class="card-body"><h3>5 Marla House - DHA Phase 6</h3><p>Demand: PKR 2.5 Crore</p><a href="https://wa.me/923204034694?text=Salam%20RANA%20Estate,%20Mujhe%20DHA%20Phase%206%20wali%20house%20chahiye" class="btn">WhatsApp Details</a></div>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800">
+    <div class="card-body"><h3>10 Marla Plot - Bahria Town</h3><p>Demand: PKR 85 Lac</p><a href="https://wa.me/923204034694" class="btn">WhatsApp Details</a></div>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800">
+    <div class="card-body"><h3>Office - Gulberg</h3><p>Rent: 75k / Month</p><a href="https://wa.me/923204034694" class="btn">WhatsApp Details</a></div>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800">
+    <div class="card-body"><h3>8 Marla Commercial - Main Road</h3><p>Demand: 4 Crore</p><a href="https://wa.me/923204034694" class="btn">WhatsApp Details</a></div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>FOR MORE HELP CONTACT US</h2>
+  <p>📧 Gmail: qstar2144@gmail.com</p>
+  <p>📱 WhatsApp: 03204034694</p>
+  <p>© 2026 RANA ESTATE ADVISOR - Lahore</p>
+</div>
+<a href="https://wa.me/923204034694?text=Salam%20RANA%20ESTATE%20ADVISOR,%20Mujhe%20property%20ke%20bare%20me%20info%20chahiye" class="float-wa">W</a>
+</body>
+</html>
