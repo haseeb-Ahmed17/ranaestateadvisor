@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>RANA PUBG PRO</title>
+<style>
+body{margin:0;background:#111;font-family:Arial;color:white;text-align:center}
+canvas{background:url('https://images.unsplash.com/photo-1504280390367-361c6d9f38d4') center/cover; display:block; margin:auto; border:2px solid gold}
+#hud{display:flex;justify-content:space-around;background:#222;padding:10px;font-weight:bold}
+.btn{background:gold;color:black;padding:12px 25px;border:none;border-radius:8px;font-weight:bold;font-size:16px}
+</style>
+</head>
+<body>
+<div id="hud">
+<span>🟢 ALIVE: <b id="alive">20</b></span>
+<span>🔵 ZONE: <b id="zone">100%</b></span>
+<span>🎯 KILLS: <b id="kills">0</b></span>
+</div>
+<canvas id="c" width="360" height="600"></canvas>
+<br>
+<button class="btn" onclick="start()">▶️ PLAY - CHICKEN DINNER</button>
+<p id="msg" style="color:gold">RANA ESTATE BATTLE ROYALE - Last tak zinda raho!</p>
+<script>
+let ctx=c.getContext('2d'), P={x:180,y:300}, E=[], alive=20,kills=0,zone=280,run=false;
+let emojis={player:'🧑‍✈️', enemy:'💀', house:'🏠', gun:'🔫'}
+function start(){
+ run=true; alive=20;kills=0;zone=280;P={x:180,y:300};
+ E=[]; for(let i=0;i<19;i++)E.push({x:Math.random()*320+20,y:Math.random()*550+20,alive:true});
+ msg.innerHTML="Plane se drop! Gharo me chupo, dushman ko maro!"; loop();
+}
+function loop(){
+ if(!run) return;
+ ctx.clearRect(0,0,360,600);
+ // Grass
+ ctx.fillStyle="#7a9e4b"; ctx.fillRect(0,0,360,600);
+ // Houses
+ ctx.font="30px Arial"; ctx.fillText("🏠",50,100); ctx.fillText("🏠",280,150); ctx.fillText("🏠",60,450); ctx.fillText("🏠",270,480);
+ // Zone
+ ctx.strokeStyle="rgba(0,100,255,0.8)"; ctx.lineWidth=4; ctx.beginPath(); ctx.arc(180,300,zone,0,7); ctx.stroke();
+ // Enemies
+ ctx.font="20px Arial";
+ E.forEach(e=>{ if(e.alive){ ctx.fillText("🤺",e.x,e.y); if(Math.hypot(P.x-e.x,P.y-e.y)>5){ e.x+=(P.x-e.x)*0.003; e.y+=(P.y-e.y)*0.003; } } });
+ // Player
+ ctx.font="24px Arial"; ctx.fillText("🎮",P.x-12,P.y+8);
+ zone-=0.2; if(zone<40) zone=40;
+ document.getElementById('zone').innerText=Math.floor(zone/2.8)+"%";
+ document.getElementById('alive').innerText=alive;
+ document.getElementById('kills').innerText=kills;
+ if(alive<=1){win()} else requestAnimationFrame(loop);
+}
+function win(){ run=false; msg.innerHTML="<h1 style='color:gold'>🏆 WINNER WINNER<br>CHICKEN DINNER! 🏆</h1><p>Aap RANA ESTATE ke Pro Player ho!</p><p>WhatsApp: 03204034694</p>"; }
+c.addEventListener('touchmove',e=>{let r=c.getBoundingClientRect(); P.x=e.touches[0].clientX-r.left; P.y=e.touches[0].clientY-r.top; e.preventDefault();},{passive:false});
+c.addEventListener('click',e=>{let r=c.getBoundingClientRect(); let mx=e.clientX-r.left, my=e.clientY-r.top;
+ E.forEach(en=>{ if(en.alive && Math.hypot(en.x-mx,en.y-my)<40){ en.alive=false; alive--; kills++; } });
+});
+</script>
+</body>
+</html>
