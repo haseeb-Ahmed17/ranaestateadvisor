@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sell - RANA ESTATE</title>
+<style>body{font-family:Arial;max-width:600px;margin:30px auto;padding:20px;background:white;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1)} input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:6px;box-sizing:border-box} button{background:#0B3D20;color:white;padding:14px;width:100%;border:none;border-radius:6px;font-weight:bold;font-size:16px} a{color:#0B3D20}</style>
+</head><body>
+<a href="index.html">← Back to Home</a>
+<h2 style="color:#0B3D20">Sell Your Property - RANA ESTATE ADVISOR</h2>
+<form id="sellForm">
+<select id="type" required><option value="">Property Type - Plot / House / Office</option><option>Plot</option><option>House</option><option>Office</option><option>Shop</option></select>
+<input id="marla" placeholder="Area by Marlas (e.g. 5 Marla, 10 Marla, 1 Kanal)" required>
+<input id="location" placeholder="Location of Place (e.g. DHA Phase 6 Lahore)" required>
+<input id="price" placeholder="Demanding Price (e.g. 2.5 Crore)" required>
+<input id="name" placeholder="Your Name" required>
+<input id="phone" placeholder="Your Phone Number" required>
+<textarea id="details" rows="4" placeholder="Complete Information (Bedrooms, Baths, Road, etc)"></textarea>
+<button type="submit">SEND TO WHATSAPP 03204034694</button>
+</form>
+<p style="text-align:center;margin-top:20px">For help: qstar2144@gmail.com</p>
+<script>
+document.getElementById('sellForm').onsubmit=function(e){
+ e.preventDefault();
+ let msg=`*NEW SELL REQUEST - RANA ESTATE*%0A%0A*Property Type:* ${document.getElementById('type').value}%0A*Area:* ${document.getElementById('marla').value}%0A*Location:* ${document.getElementById('location').value}%0A*Demand Price:* ${document.getElementById('price').value}%0A*Owner Name:* ${document.getElementById('name').value}%0A*Phone:* ${document.getElementById('phone').value}%0A*Details:* ${document.getElementById('details').value}`;
+ window.open(`https://wa.me/923204034694?text=${msg}`,'_blank');
+}
+</script>
+</body></html>
