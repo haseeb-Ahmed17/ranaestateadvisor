@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RANA PUBG MINI</title>
+<style>
+body{margin:0;background:#2d4a22;color:white;font-family:Arial;overflow:hidden;text-align:center}
+#gameCanvas{border:3px solid #ffcc00;background:#8a9a5b;cursor:crosshair}
+#ui{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.7);padding:10px;border-radius:5px}
+button{padding:15px 30px;font-size:18px;background:#ffcc00;border:none;font-weight:bold;border-radius:5px}
+</style>
+</head>
+<body>
+<h2>🎮 RANA ESTATE - PUBG MINI</h2>
+<div id="ui">Players Alive: <span id="alive">20</span> | Safe Zone: <span id="zone">100%</span> | Kills: <span id="kills">0</span></div>
+<canvas id="gameCanvas" width="400" height="600"></canvas>
+<br><br>
+<button onclick="startGame()">MATCH START - TAP TO PLAY</button>
+<p id="msg">Plane se drop ho, gun looto, last tak zinda raho!</p>
+
+<script>
+let canvas=document.getElementById('gameCanvas'),ctx=canvas.getContext('2d');
+let player={x:200,y:300,hp:100,gun:false},enemies=[],alive=20,kills=0,zone=100,game=false;
+
+function startGame(){
+ game=true; player.x=200; player.y=300; enemies=[];
+ for(let i=0;i<19;i++) enemies.push({x:Math.random()*380,y:Math.random()*580,alive:true});
+ alive=20;kills=0;zone=100;
+ document.getElementById('msg').innerHTML="WINNER WINNER CHICKEN DINNER ke liye lado!";
+ loop();
+}
+function loop(){
+ if(!game) return;
+ ctx.fillStyle='#8a9a5b'; ctx.fillRect(0,0,400,600);
+ // Safe zone circle
+ ctx.strokeStyle='blue'; ctx.lineWidth=3;
+ ctx.beginPath(); ctx.arc(200,300,zone*2,0,Math.PI*2); ctx.stroke();
+ // Player
+ ctx.fillStyle='yellow'; ctx.fillRect(player.x-10,player.y-10,20,20);
+ // Enemies
+ enemies.forEach(e=>{if(e.alive){ctx.fillStyle='red'; ctx.fillRect(e.x-8,e.y-8,16,16);
+   if(Math.random()<0.02){e.x+= (player.x-e.x)*0.01}
+ }});
+ zone-=0.05; if(zone<20) zone=20;
+ document.getElementById('zone').innerText=Math.floor(zone)+"%";
+ document.getElementById('alive').innerText=alive;
+ document.getElementById('kills').innerText=kills;
+ if(zone<=20 && alive<=1){endGame(true)} else requestAnimationFrame(loop);
+}
+function endGame(win){
+ game=false;
+ document.getElementById('msg').innerHTML= win ? "<h1 style='color:gold'>🏆 WINNER WINNER CHICKEN DINNER! 🏆</h1><p>Aap akhri tak zinda rahe! RANA ESTATE ki taraf se mubarak ho!</p>" : "<h1>GAME OVER</h1>";
+}
+canvas.addEventListener('touchmove',e=>{
+ let r=canvas.getBoundingClientRect();
+ player.x=e.touches[0].clientX-r.left; player.y=e.touches[0].clientY-r.top;
+});
+canvas.addEventListener('click',e=>{
+ enemies.forEach(en=>{
+   if(en.alive && Math.abs(en.x-player.x)<30 && Math.abs(en.y-player.y)<30){en.alive=false;alive--;kills++; if(alive==1) endGame(true)}
+ });
+});
+</script>
+</body>
+</html>
